@@ -26,4 +26,5 @@ export const Title = styled.Text`
 export const ButtonStyled = styled.Text`
   font-size: 20;
   color: #fff;
+  padding: 5%;
 `;

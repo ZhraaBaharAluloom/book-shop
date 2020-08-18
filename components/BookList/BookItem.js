@@ -1,13 +1,20 @@
 import React from "react";
 import { View } from "react-native";
 import { BookItemStyled } from "./styles";
-import { ListItem } from "native-base";
+import { ListItem, Thumbnail } from "native-base";
+import bookitem from "../../bookitem.jpg";
+import VendorList from "../VendorList";
 
 const BookItem = ({ book }) => {
   return (
-    <ListItem>
-      <BookItemStyled>{book.name}</BookItemStyled>
-    </ListItem>
+    <View>
+      <ListItem>
+        <Thumbnail
+          source={book.image ? { uri: book.image } : bookitem}
+        ></Thumbnail>
+        <BookItemStyled>{book.name}</BookItemStyled>
+      </ListItem>
+    </View>
   );
 };
 

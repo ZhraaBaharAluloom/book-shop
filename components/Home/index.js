@@ -2,7 +2,7 @@ import React from "react";
 
 import { HomeBackground, HomeStyling, Title, ButtonStyled } from "./styles";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <HomeBackground
       source={{
@@ -12,8 +12,8 @@ const Home = () => {
     >
       <HomeStyling>
         <Title>BOOKS & BOOKS</Title>
-        <ButtonStyled onPress={() => alert("Take me to the list of bakeries")}>
-          Click here
+        <ButtonStyled onPress={() => navigation.navigate("Vendors")}>
+          Bookshop{" "}
         </ButtonStyled>
       </HomeStyling>
     </HomeBackground>

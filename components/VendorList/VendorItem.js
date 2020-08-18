@@ -1,16 +1,13 @@
 import React from "react";
 import { ListItem, Thumbnail } from "native-base";
 import { VendorItemStyled } from "./styles";
+import defaultbook from "../../defaultbook.jpeg";
 
-const VendorItem = ({ vendor }) => {
+const VendorItem = ({ vendor, navigation }) => {
   return (
-    <ListItem>
+    <ListItem onPress={() => navigation.navigate("Books", { vendor: vendor })}>
       <Thumbnail
-        source={{
-          uri:
-            vendor.image ||
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT5XPbBtUuN16bFaxmh0Ar6IyZfOk89n9e95Q&usqp=CAU",
-        }}
+        source={vendor.image ? { uri: vendor.image } : defaultbook}
       ></Thumbnail>
       <VendorItemStyled>{vendor.name}</VendorItemStyled>
     </ListItem>

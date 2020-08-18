@@ -1,10 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Home from "./components/Home";
 import { ThemeProvider } from "styled-components";
+import RootNavigator from "./components/Navigation";
 import VendorList from "./components/VendorList";
-import BookList from "./components/BookList";
+import { NavigationContainer } from "@react-navigation/native";
 
 const theme = {
   light: {
@@ -22,21 +21,25 @@ const theme = {
     red: "#ff3232",
   },
 };
+
+const MyTheme = {
+  dark: false,
+  colors: {
+    primary: "#ccc5b9",
+    background: "#ffffff",
+    card: "#ccc5b9",
+    text: "#ccc5b9",
+    border: "#5e6472",
+    notification: "rgb(255, 69, 58)",
+  },
+};
+
 export default function App() {
   return (
     <ThemeProvider theme={theme.dark}>
-      {/* <VendorList /> */}
-      {/* <BookList /> */}
-      <Home />
+      <NavigationContainer theme={MyTheme}>
+        <RootNavigator />
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
