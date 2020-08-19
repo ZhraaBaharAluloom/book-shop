@@ -5,6 +5,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../Home";
 import VendorList from "../VendorList";
 import BookList from "../BookList";
+import CartList from "../CartList";
+import CartButton from "../Buttons/CartButton";
 
 const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
@@ -25,9 +27,27 @@ const RootNavigator = () => {
       <Screen
         name="Vendors"
         component={VendorList}
-        options={{ title: "Bookshop" }}
+        options={{ title: "Bookshops", headerRight: () => <CartButton /> }}
       />
-      <Screen name="Books" component={BookList} />
+      <Screen
+        name="Books"
+        component={BookList}
+        options={({ route }) => {
+          const { vendor } = route.params;
+          return {
+            title: vendor.name,
+            headerRight: () => <CartButton />,
+          };
+        }}
+      />
+
+      <Screen
+        name="Cart"
+        component={CartList}
+        options={{
+          headerRight: () => <CartButton />,
+        }}
+      />
     </Navigator>
   );
 };

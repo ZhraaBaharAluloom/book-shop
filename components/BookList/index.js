@@ -13,8 +13,8 @@ const BookList = ({ route }) => {
   const { vendor } = route.params;
 
   const bookList = vendor.books
-    // .filter((book) => book.name.toLowerCase().includes(query.toLowerCase()))
     .map((book) => bookStore.getBookById(book.id))
+    .filter((book) => book.name.toLowerCase().includes(query.toLowerCase()))
     .map((book) => <BookItem book={book} key={book.id} />);
   return (
     <Content>

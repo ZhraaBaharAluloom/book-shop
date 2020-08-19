@@ -7,7 +7,7 @@ const Home = ({ navigation }) => {
     <HomeBackground
       source={{
         uri:
-          "https://i1.pickpik.com/photos/916/460/15/dark-gloomy-books-pages-preview.jpg",
+          "https://images.creativemarket.com/0.1.0/ps/4949375/1820/2403/m1/fpnw/wm1/zjgmjziyz7egrrmk4sdijbyfhglrvletsblcr8eer5gueqcscjhylnrf9ziqoraj-.jpg?1535129149&s=43cf3db502ce55f1397194e932e74fff",
       }}
     >
       <HomeStyling>
