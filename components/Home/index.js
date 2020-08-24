@@ -1,8 +1,22 @@
 import React from "react";
 
-import { HomeBackground, HomeStyling, Title, ButtonStyled } from "./styles";
+// Styles
+import {
+  HomeBackground,
+  HomeStyling,
+  Title,
+  ButtonStyled,
+  SigninHomeStyled,
+  WelcomeStyled,
+} from "./styles";
+
+//Stores
+import authStore from "../../stores/authStore";
+import { Button, Text } from "native-base";
+import { observer } from "mobx-react";
 
 const Home = ({ navigation }) => {
+  // let user = authStore.user;
   return (
     <HomeBackground
       source={{
@@ -12,11 +26,25 @@ const Home = ({ navigation }) => {
     >
       <HomeStyling>
         <Title>BOOKS & BOOKS</Title>
-        <ButtonStyled onPress={() => navigation.navigate("Vendors")}>
-          Bookshop{" "}
-        </ButtonStyled>
+
+        <WelcomeStyled onPress={() => navigation.navigate("Vendors")}>
+          {authStore.user
+            ? `Hello, ${authStore.user.username}. Welcome To The Books World ! `
+            : ""}
+        </WelcomeStyled>
+
+        {/* <SigninHomeStyled onPress={() => navigation.navigate("Sign in")}> */}
+        <SigninHomeStyled
+          onPress={
+            authStore.user
+              ? authStore.signout
+              : () => navigation.navigate("Sign in")
+          }
+        >
+          {authStore.user ? "Sign out" : "Sign in"}
+        </SigninHomeStyled>
       </HomeStyling>
     </HomeBackground>
   );
 };
-export default Home;
+export default observer(Home);

@@ -13,3 +13,17 @@ export const AddButtonStyled = styled.Text`
   padding-top: 10px;
   color: #723d46;
 `;
+
+export const VendorTextStyled = styled.Text`
+  font-size: 20px;
+  padding: 10%;
+  text-transform: uppercase;
+  align-self: center;
+  color: #723d46;
+`;
+
+export const BookDetailStyled = styled.Text`
+  padding: 8%;
+  margin: 10%;
+  align-self: center;
+`;

@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import RootNavigator from "./components/Navigation";
 import VendorList from "./components/VendorList";
 import { NavigationContainer } from "@react-navigation/native";
+import { MenuProvider } from "react-native-popup-menu";
 
 const theme = {
   light: {
@@ -38,7 +39,9 @@ export default function App() {
   return (
     <ThemeProvider theme={theme.dark}>
       <NavigationContainer theme={MyTheme}>
-        <RootNavigator />
+        <MenuProvider>
+          <RootNavigator />
+        </MenuProvider>
       </NavigationContainer>
     </ThemeProvider>
   );

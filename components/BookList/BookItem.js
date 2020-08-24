@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import NumericInput from "react-native-numeric-input";
 import { observer } from "mobx-react";
+import NumericInput from "react-native-numeric-input";
 
 // Stores
 import cartStore from "../../stores/cartStore";
@@ -10,27 +10,21 @@ import bookitem from "../../bookitem.jpg";
 
 // Styles
 import { BookItemStyled, AddButtonStyled } from "./styles";
-import {
-  ListItem,
-  Thumbnail,
-  Left,
-  Body,
-  Right,
-  Button,
-  Text,
-} from "native-base";
+import { ListItem, Thumbnail, Left, Body, Right } from "native-base";
 
-const BookItem = ({ book }) => {
+const BookItem = ({ book, navigation }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleAdd = () => {
     const newItem = { quantity, bookId: book.id };
-    console.log("handleAdd -> newItem", newItem);
     cartStore.addItemToCart(newItem);
   };
 
   return (
-    <ListItem avatar>
+    <ListItem
+      avatar
+      onPress={() => navigation.navigate("Book Detail", { book: book })}
+    >
       <Left>
         <Thumbnail source={book.image ? { uri: book.image } : bookitem} />
       </Left>
@@ -42,10 +36,11 @@ const BookItem = ({ book }) => {
           rounded
           value={quantity}
           onChange={setQuantity}
-          totalHeight={30}
+          totalHeight={25}
           initValue={1}
           totalWidth={60}
           minValue={1}
+          containerStyle={{ borderColor: "#723d46" }}
         />
         <AddButtonStyled transparent onPress={handleAdd}>
           Add

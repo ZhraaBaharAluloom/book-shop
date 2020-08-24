@@ -7,6 +7,10 @@ import VendorList from "../VendorList";
 import BookList from "../BookList";
 import CartList from "../CartList";
 import CartButton from "../Buttons/CartButton";
+import Signin from "../Authentication/Signin";
+import Signup from "../Authentication/Signup";
+import Dropdown from "../DropdownMenu/Dropdown";
+import BookDetail from "../BookList/BookDetail";
 
 const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
@@ -27,7 +31,10 @@ const RootNavigator = () => {
       <Screen
         name="Vendors"
         component={VendorList}
-        options={{ title: "Bookshops", headerRight: () => <CartButton /> }}
+        options={{
+          title: "SHOPS",
+          headerRight: () => <CartButton />,
+        }}
       />
       <Screen
         name="Books"
@@ -40,14 +47,27 @@ const RootNavigator = () => {
           };
         }}
       />
+      <Screen
+        name="Book Detail"
+        component={BookDetail}
+        options={({ route }) => {
+          const { book } = route.params;
+          return {
+            title: book.name,
+          };
+        }}
+      />
 
       <Screen
-        name="Cart"
+        name="CART"
         component={CartList}
         options={{
           headerRight: () => <CartButton />,
+          headerLeft: () => <Dropdown />,
         }}
       />
+      <Screen name="Sign in" component={Signin} />
+      <Screen name="Sign up" component={Signup} />
     </Navigator>
   );
 };

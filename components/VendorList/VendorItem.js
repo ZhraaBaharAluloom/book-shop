@@ -1,6 +1,10 @@
 import React from "react";
+
+// Styles
 import { ListItem, Thumbnail } from "native-base";
 import { VendorItemStyled } from "./styles";
+
+// Default image
 import defaultbook from "../../defaultbook.jpeg";
 
 const VendorItem = ({ vendor, navigation }) => {

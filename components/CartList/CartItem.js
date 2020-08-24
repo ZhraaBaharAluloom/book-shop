@@ -7,7 +7,7 @@ import cartStore from "../../stores/cartStore";
 import bookStore from "../../stores/bookStore";
 
 //Srtyles
-import { ListItem, Body, Text, Right } from "native-base";
+import { ListItem, Body, Text, Right, Left } from "native-base";
 import {
   TotalPrice,
   TrashIcon,
@@ -17,8 +17,8 @@ import {
 
 const CartItem = ({ item }) => {
   const [quantity, setQuantity] = useState(0);
-  const handleAdd = () => {
-    const newItem = { quantity, bookId: book.id };
+  const handleUpdate = () => {
+    const newItem = { quantity, bookId: item.id };
     cartStore.addItemToCart(newItem);
   };
 
@@ -31,7 +31,6 @@ const CartItem = ({ item }) => {
         </Text>
         <TotalPrice>Total Price: {item.price * item.quantity} $</TotalPrice>
       </Body>
-
       <Right>
         <NumericInput
           rounded
@@ -41,14 +40,15 @@ const CartItem = ({ item }) => {
           initValue={1}
           totalWidth={60}
           minValue={1}
+          containerStyle={{ borderColor: "#723d46" }}
         />
         <TrashIcon
           type="EvilIcons"
           name="trash"
           onPress={() => cartStore.removeItemFromCart(item.id)}
         />
-        <AddButtonStyled transparent onPress={handleAdd}>
-          Add
+        <AddButtonStyled transparent onPress={handleUpdate}>
+          Update
         </AddButtonStyled>
       </Right>
     </ListItem>
